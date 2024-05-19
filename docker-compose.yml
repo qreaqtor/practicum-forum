@@ -27,6 +27,8 @@ services:
 
   goapp:
     image: 'golang:1.21.0'
+    environment:
+        ORIGIN_ALLOWED: "localhost:5173"
     volumes:
       - './:/forum'
     working_dir: '/forum'

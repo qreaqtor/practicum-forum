@@ -11,6 +11,7 @@ import (
 	"net/http"
 	"os"
 
+	handls "github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 )
 
@@ -91,12 +92,18 @@ func main() {
 
 	panicMiddleware := middleware.Panic(logger, router)
 
+	origin := os.Getenv("ORIGIN_ALLOWED")
+
+	headersOk := handls.AllowedHeaders([]string{"Authorization","Content-Type", "application/json"})
+	originsOk := handls.AllowedOrigins([]string{origin})
+	methodsOk := handls.AllowedMethods([]string{"GET", "POST", "DELETE"})
+
 	addr := ":8080"
 	logger.Info(
 		"starting server",
 		"address", addr,
 	)
-	err = http.ListenAndServe(addr, panicMiddleware)
+	err = http.ListenAndServe(addr, handls.CORS(headersOk, originsOk, methodsOk)(panicMiddleware))
 	if err != nil {
 		logger.Error(err.Error())
 	}

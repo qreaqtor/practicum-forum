@@ -15,12 +15,15 @@ require (
 	gopkg.in/DATA-DOG/go-sqlmock.v1 v1.3.0
 )
 
+require github.com/felixge/httpsnoop v1.0.3 // indirect
+
 require (
 	filippo.io/edwards25519 v1.1.0 // indirect
 	github.com/alicebob/gopher-json v0.0.0-20200520072559-a9ecdc9d1d3a // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/golang/snappy v0.0.1 // indirect
 	github.com/google/go-cmp v0.6.0 // indirect
+	github.com/gorilla/handlers v1.5.2
 	github.com/klauspost/compress v1.13.6 // indirect
 	github.com/montanaflynn/stats v0.0.0-20171201202039-1bf9dbcd8cbe // indirect
 	github.com/onsi/ginkgo v1.16.5 // indirect

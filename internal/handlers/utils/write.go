@@ -12,19 +12,6 @@ import (
 */
 func WriteError(w http.ResponseWriter, msg *logMsg) {
 	msg.Error()
-	// w.Header().Set("Content-Type", "application/json")
-	// response, err := json.Marshal(map[string]interface{}{
-	// 	"msg": msg.Message,
-	// })
-	// if err != nil {
-	// 	http.Error(w, err.Error(), http.StatusInternalServerError)
-	// 	return
-	// }
-	// _, err = w.Write(response)
-	// if err != nil {
-	// 	http.Error(w, err.Error(), http.StatusInternalServerError)
-	// 	return
-	// }
 	http.Error(w, msg.Message, msg.Status)
 }
 
